@@ -54,11 +54,11 @@ knitr::include_graphics('copy_link.png')
 
 #### Downloading
 
-Use `sp_qget()` (quick get). This requires the full URL, a destination file save name, and your credentials. Use `get_config = T` when on on work site, where network issues maybe occur.
+Use `sp_qget()` (quick get). This requires the full URL, a destination file save name, and your credentials. Use `get_config = T` when on on work site, where network issues maybe occur. If `destfile` is missing, then the basename of the url will be used (here, DD_tables_used.csv)
 
 ```{r sp_qget}
 sp_qget(url = "https://n...h.sharepoint.com/sites/N...H/Shared Documents/Reporting/DD_tables_used.csv",
-        destfile = 'DD_tables_used.csv',
+        destfile = 'DD_tables_used.csv', # optional
         username = 'me@myplace.com', 
         password = keyring::key_get('mail'), 
         get_config = T)
