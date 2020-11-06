@@ -1,0 +1,27 @@
+Package: sharepointR
+Title: Perform CRUD operations on SharePoint sites
+Version: 0.0.1
+Authors@R: 
+    person(given = "Shaun",
+           family = "Nielsen",
+           role = c("aut", "cre"),
+           email = "secret@gmail.com")
+    person(given = "Malcom",
+           family = "Gillies",
+           role = c("aut", "cre"),
+           email = "secret@gmail.com")
+Description: Download files from a SharePoint.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    httr,
+    xml2,
+    curl
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
