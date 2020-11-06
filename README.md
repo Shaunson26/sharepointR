@@ -71,7 +71,7 @@ credentials. This will create a list of objects required to move on.
 ``` r
 sp_con <- 
   sp_connection(site = 'https://n...w.sharepoint.com/sites/N...H',
-                username = 'shaun.nielsen@health.nsw.gov.au', 
+                username = 'me@myplace.com', 
                 password = keyring::key_get('mail'), 
                 get_config = T)
 ```
