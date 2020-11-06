@@ -33,11 +33,8 @@ sp_connection <- function(site, username, password, get_config = F, config){
     config <- NULL
   }
 
-  # horrible method to get base and site
-  base <- sub('^.+://', '', site)
-  base <- sub('/.*', '', base)
-  site <- sub(base, '', site)
-  site <- sub('^.+:///', '', site)
+  base <- clean_url(site, return = 'base')
+  site <- clean_url(site, return = 'site')
 
   # tokens and cookies
   token <- get_token(base_site = base,
@@ -52,7 +49,7 @@ sp_connection <- function(site, username, password, get_config = F, config){
 
   # return value
   structure(.Data =
-              list(site = list(base = base,
+              list(site = list(base = paste0('https://', base),
                                site = site),
                    config = config,
                    cookies = cookies),

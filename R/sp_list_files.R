@@ -11,6 +11,8 @@ sp_list_files <- function(connection, rurl){
   url <- file.path(do.call(file.path, connection$site), '_api/web',
                    sprintf("GetFolderByServerRelativeUrl('%s')", URLencode(rurl)), 'files')
 
+  message(url)
+
   response <-
     httr::GET(url,
               httr::set_cookies(rtFa = connection$cookies$rtFa, FedAuth = connection$cookies$FedAuth),

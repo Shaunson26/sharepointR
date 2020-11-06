@@ -41,10 +41,6 @@ sharepoint site, hover over a file and click ‘see details’. On the right
 pane, click ‘More details’. Then click the copy path link (an icon).
 This will give you the URL
 
-``` r
-knitr::include_graphics('copy_link.png')
-```
-
 <img src="copy_link.png" width="90%" style="display: block; margin: auto;" />
 
 #### Downloading

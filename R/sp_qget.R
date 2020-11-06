@@ -28,15 +28,19 @@ sp_qget <- function(url, destfile, username, password, get_config = F, config){
   }
 
   if (get_config) {
-    #cat('getting config\n')
     config <- get_config()
   } else if (missing(config)){
-    #cat('config NULL\n')
     config <- NULL
   }
 
-  token <- get_token(username = username, password = password, config = config)
-  cookies <- get_cookie(token = token, config = config)
+  base <- clean_url(url, return = 'base')
+
+  if (missing(destfile)){
+    destfile = basename(url)
+  }
+
+  token <- get_token(base_site = base, username = username, password = password, config = config)
+  cookies <- get_cookie(base_site = base, token = token, config = config)
 
   response = httr::GET(URLencode(url),
                        httr::set_cookies(rtFa = cookies$rtFa, FedAuth = cookies$FedAuth),

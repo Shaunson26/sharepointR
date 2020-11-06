@@ -48,7 +48,7 @@ There are two approaches to doing things with `sharepointR`:
 
 In order to download a file you must know it's URL. Within the sharepoint site, hover over a file and click 'see details'. On the right pane, click 'More details'. Then click the copy path link (an icon). This will give you the URL
 
-```{r, out.width='90%', fig.align='center', eval = T}
+```{r, out.width='90%', fig.align='center', eval = T, echo = F}
 knitr::include_graphics('copy_link.png')
 ```
 

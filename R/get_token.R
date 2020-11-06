@@ -15,14 +15,12 @@ get_token <- function(base_site, username, password, get_config = F, config){
   }
 
   if (get_config) {
-    #cat('getting config\n')
     config <- get_config()
   } else if (missing(config)){
-    #cat('config NULL\n')
     config <- NULL
   }
 
-  base_site = sub('^.+://', '', base_site)
+  base_site = clean_url(base_site, return = 'base')
 
   request = readLines(system.file("saml.xml", package = "sharepointR"), warn = F)
   #request = suppressWarnings(readLines('inst/saml.xml'))
