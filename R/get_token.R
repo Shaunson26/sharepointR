@@ -20,10 +20,7 @@ get_token <- function(base_site, username, password, get_config = F, config){
     config <- NULL
   }
 
-  base_site = clean_url(base_site, return = 'base')
-
   request = readLines(system.file("saml.xml", package = "sharepointR"), warn = F)
-  #request = suppressWarnings(readLines('inst/saml.xml'))
   request = gsub("\\{Username\\}", username, request)
   request = gsub("\\{Password\\}", password, request)
   request = gsub("\\{Address\\}", base_site, request)

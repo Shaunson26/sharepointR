@@ -5,7 +5,6 @@
 #' @param get_config boolean, whether to use proxy script (from Internet Explorer settings).
 #' Will fail if you are outside the network and not on the VPN
 #' @param config httr::config request, a httr::config list
-
 #'
 #' @export
 get_cookie <- function(base_site, token, get_config = F, config){
@@ -15,14 +14,13 @@ get_cookie <- function(base_site, token, get_config = F, config){
   }
 
   if (get_config) {
-    #cat('getting config\n')
     config <- get_config()
   } else if (missing(config)){
-    #cat('config NULL\n')
     config <- NULL
   }
 
-  base_site = sub('^.+://', '', base_site)
+  # Remove HTTP for header
+  base_site = sub('(http[s]?://)', '', base_site)
 
   post_url = sprintf("https://%s/_forms/default.aspx?wa=wsignin1.0", base_site)
 

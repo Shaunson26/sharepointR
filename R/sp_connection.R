@@ -15,7 +15,7 @@
 #' @examples
 #'\dontrun{
 #'  sp_con <- sp_connection(site = 'https://org.sharepoint.com/sites/our_team',
-#'                          username = 'me@org.place.come',
+#'                          username = 'me@org.place.com',
 #'                          password = 'mypass')
 #'}
 #' @export
@@ -26,15 +26,14 @@ sp_connection <- function(site, username, password, get_config = F, config){
   }
 
   if (get_config) {
-    #cat('getting config\n')
     config <- get_config()
   } else if (missing(config)){
-    #cat('config NULL\n')
     config <- NULL
   }
 
-  base <- clean_url(site, return = 'base')
-  site <- clean_url(site, return = 'site')
+  # Extract parts of site URL
+  base <- get_base(site)
+  site <- get_site(site)
 
   # tokens and cookies
   token <- get_token(base_site = base,
@@ -49,7 +48,7 @@ sp_connection <- function(site, username, password, get_config = F, config){
 
   # return value
   structure(.Data =
-              list(site = list(base = paste0('https://', base),
+              list(site = list(base = base,
                                site = site),
                    config = config,
                    cookies = cookies),

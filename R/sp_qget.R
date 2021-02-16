@@ -33,7 +33,7 @@ sp_qget <- function(url, destfile, username, password, get_config = F, config){
     config <- NULL
   }
 
-  base <- clean_url(url, return = 'base')
+  base <- get_base(url)
 
   if (missing(destfile)){
     destfile = basename(url)
@@ -48,7 +48,7 @@ sp_qget <- function(url, destfile, username, password, get_config = F, config){
                        httr::write_disk(destfile, overwrite = T))
 
   if (response$all_headers[[1]]$status == 200) {
-    message('File successfully downloaded to ', destfile)
+    message('File successfully downloaded to "', destfile, '"')
   } else {
     stop('File failed downloaded.')
   }

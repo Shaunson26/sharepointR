@@ -10,9 +10,13 @@
 #' @export
 sp_get_file <- function(connection, rurl, destfile){
 
-  if (grepl(sp_con$site$site, rurl)) {
-    rurl <- sub(paste0('[\\/|]', sp_con$site$site, '[\\/|]'), '',  rurl)
+  if (grepl(connection$site$site, rurl)) {
+    # [/]site[/]
+    rurl <- sub(paste0('[\\/]?', connection$site$site, '[\\/]?'), '',  rurl)
   }
+
+  # Leading /
+  rurl = sub('^\\/?', '', rurl)
 
   url <- file.path(do.call(file.path, connection$site), URLencode(rurl))
 
@@ -26,7 +30,7 @@ sp_get_file <- function(connection, rurl, destfile){
                        httr::write_disk(destfile, overwrite = T))
 
   if (response$all_headers[[1]]$status == 200) {
-    message('File successfully downloaded to ', destfile)
+    message('File successfully downloaded to "', destfile, '"')
   } else {
     stop('File failed downloaded.')
   }
