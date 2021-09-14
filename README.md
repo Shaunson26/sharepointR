@@ -3,6 +3,9 @@
 
 # sharepointR
 
+> **This project has been shelved. It was a good learning experience.**  
+> You probably want to use the [Microsoft365R](https://github.com/Azure/Microsoft365R) package that uses the [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/)
+>> 
 <!-- badges: start -->
 
 <!-- badges: end -->
